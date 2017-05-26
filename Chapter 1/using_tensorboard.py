@@ -1,4 +1,4 @@
-#using_tensorboard.py
+# 텐서보드 활용
 
 import tensorflow as tf
 
