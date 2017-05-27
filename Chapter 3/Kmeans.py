@@ -62,15 +62,10 @@ data = [10, 20, 30, 40, 50]
 partitions = tf.dynamic_partition(vectors, assignments, num_clusters)
 
 for partition in partitions:
-    update_centroids = tf.concat(axis=0, values=tf.expand_dims(tf.reduce_mean(partitions,0),0))
+    update_centroids = tf.concat(tf.expand_dims(tf.reduce_mean(partition,0),0),0)
 
-"""
-update_centroids = tf.concat(0, \
-                             [tf.expand_dims\
-                              (tf.reduce_mean(partition, 0), 0)\
-                              for partition in partitions])
-"""
-init_op = tf.initialize_all_variables()
+
+init_op = tf.global_variables_initializer()
 
 sess = tf.Session()
 sess.run(init_op)
