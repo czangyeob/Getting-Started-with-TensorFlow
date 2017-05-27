@@ -27,7 +27,7 @@ y_values = []
 vector_values = []
 
 #CREATE RANDOM DATA
-for i in xrange(num_vectors):
+for i in range(num_vectors):
   if np.random.random() > 0.5:
     x_values.append(np.random.normal(0.4, 0.7))
     y_values.append(np.random.normal(0.2, 0.8))
@@ -49,8 +49,7 @@ expanded_vectors = tf.expand_dims(vectors, 0)
 expanded_centroids = tf.expand_dims(centroids, 1)
 
 vectors_subtration = tf.sub(expanded_vectors,expanded_centroids)
-euclidean_distances =         
-               \tf.reduce_sum(tf.square(vectors_subtration), 2)
+euclidean_distances =tf.reduce_sum(tf.square(vectors_subtration), 2)
 
 assignments = tf.to_int32(tf.argmin(euclidean_distances, 0))
 
@@ -71,7 +70,7 @@ init_op = tf.initialize_all_variables()
 
 sess = tf.Session()
 sess.run(init_op)
-for step in xrange(num_steps):
+for step in range(num_steps):
    _, centroid_values, assignment_values =\
       sess.run([update_centroids,\
                 centroids,\
