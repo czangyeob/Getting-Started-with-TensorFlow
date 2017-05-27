@@ -1,3 +1,4 @@
+# Fail
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -7,7 +8,7 @@ import tensorflow as tf
 def display_partition(x_values,y_values,assignment_values):
     labels = []
     colors = ["red","blue","green","yellow"]
-    for i in xrange(len(assignment_values)):
+    for i in range(len(assignment_values)):
       labels.append(colors[(assignment_values[i])])
     color = labels
     df = pd.DataFrame\
@@ -35,7 +36,7 @@ for i in range(num_vectors):
   else:
     x_values.append(np.random.normal(0.6, 0.4))
     y_values.append(np.random.normal(0.8, 0.5))
-vector_values = zip(x_values,y_values)
+vector_values = list(zip(x_values,y_values))
 vectors = tf.constant(vector_values)
 
 n_samples = tf.shape(vector_values)[0]
@@ -48,7 +49,7 @@ centroids = tf.Variable(tf.gather(vector_values, centroid_indices))
 expanded_vectors = tf.expand_dims(vectors, 0)
 expanded_centroids = tf.expand_dims(centroids, 1)
 
-vectors_subtration = tf.sub(expanded_vectors,expanded_centroids)
+vectors_subtration = tf.subtract(expanded_vectors,expanded_centroids)
 euclidean_distances =tf.reduce_sum(tf.square(vectors_subtration), 2)
 
 assignments = tf.to_int32(tf.argmin(euclidean_distances, 0))
@@ -56,16 +57,19 @@ assignments = tf.to_int32(tf.argmin(euclidean_distances, 0))
 partitions = [0, 0, 1, 1, 0]
 num_partitions = 2
 data = [10, 20, 30, 40, 50]
-outputs[0] = [10, 20, 50]
-outputs[1] = [30, 40]
+#outputs[0] = [10, 20, 50]
+#outputs[1] = [30, 40]
 partitions = tf.dynamic_partition(vectors, assignments, num_clusters)
 
+for partition in partitions:
+    update_centroids = tf.concat(axis=0, values=tf.expand_dims(tf.reduce_mean(partitions,0),0))
+
+"""
 update_centroids = tf.concat(0, \
                              [tf.expand_dims\
                               (tf.reduce_mean(partition, 0), 0)\
                               for partition in partitions])
-
-
+"""
 init_op = tf.initialize_all_variables()
 
 sess = tf.Session()
