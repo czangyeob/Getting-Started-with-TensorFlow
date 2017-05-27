@@ -1,21 +1,19 @@
-# Getting Started with TensorFlow
+# 텐서플로 입문 (원서:Getting Started with TensorFlow)
 
 ## Code Testing Specifications
 
 Software required (With version): 
-Python(2.7)
-TensorFlow(0.7)
-Bazel(0.3.0)
-Pip(8.1.2)
-MatPlotlib(1.5.1)
-Pandas(0.18.1)
-NumPy(1.11.0)
+Python(3.5)
+TensorFlow(1.0)
+MatPlotlib(2.0.0)
+Pandas(0.19.2)
+NumPy(1.12.1)
 
 OS required:
-Linux Ubuntu 64 bit
-
+Windows
 
 ##Related TensorFlow Books:
+* 텐서플로 입문(에이콘출판사)
 * [Deep Learning with TensorFlow [Video]](https://www.packtpub.com/big-data-and-business-intelligence/deep-learning-tensorflow-video?utm_source=GitHub&utm_medium=Repository&utm_campaign=9781786464491)
 * [TensorFlow Machine Learning Cookbook](https://www.packtpub.com/big-data-and-business-intelligence/tensorflow-machine-learning-cookbook?utm_source=GitHub&utm_medium=Repository&utm_campaign=9781786462169)
 
