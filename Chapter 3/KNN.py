@@ -1,7 +1,7 @@
 import numpy as np
 import tensorflow as tf
 import input_data
-# Download input_data.py
+# Download input_data_old.py
 # https://github.com/tensorflow/tensorflow/blob/r1.1/tensorflow/examples/tutorials/mnist/input_data.py
 
 #Build the Training Set
