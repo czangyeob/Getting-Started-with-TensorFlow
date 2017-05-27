@@ -297,7 +297,7 @@ def main(_):
       mvalid = PTBModel(is_training=False, config=config)
       mtest = PTBModel(is_training=False, config=eval_config)
 
-    tf.initialize_all_variables().run()
+    tf.global_variables_initializer().run()
 
     for i in range(config.max_max_epoch):
       lr_decay = config.lr_decay ** max(i - config.max_epoch, 0.0)
